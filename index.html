@@ -10,241 +10,223 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Cormorant Garamond',serif;background:#0F1115;color:#F5F0EB;overflow-x:hidden;line-height:1.7;font-size:1.1rem}
+body{font-family:'Cormorant Garamond',serif;background:#0A0B0E;color:#ECE6DD;overflow-x:hidden;line-height:1.7;font-size:1.1rem}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
 .section{padding:100px 0;position:relative;overflow:hidden}
-.section-title{font-family:'Pirata One',cursive;font-size:3.5rem;text-align:center;color:#D4AF37;margin-bottom:12px;letter-spacing:4px;font-weight:400;text-transform:uppercase}
-.section-subtitle{text-align:center;color:#B9BEC8;font-size:1.15rem;margin-bottom:60px;max-width:600px;margin-left:auto;margin-right:auto;font-style:italic}
-.gold-text{color:#D4AF37}
+.section-title{font-family:'Pirata One',cursive;font-size:3.5rem;text-align:center;color:#C9A84C;margin-bottom:12px;letter-spacing:4px;font-weight:400;text-transform:uppercase}
+.section-subtitle{text-align:center;color:#A4AAB5;font-size:1.15rem;margin-bottom:60px;max-width:600px;margin-left:auto;margin-right:auto;font-style:italic}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:16px 36px;border-radius:2px;font-family:'Pirata One',cursive;font-size:1.15rem;transition:all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer;border:none;letter-spacing:2px;text-transform:uppercase;position:relative;overflow:hidden}
-.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left 0.6s}
+.btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);transition:left 0.5s}
 .btn:hover::before{left:100%}
-.btn-primary{background:linear-gradient(135deg,#D4AF37,#F0C75E);color:#0F1115;box-shadow:0 4px 15px rgba(212,175,55,0.25)}
-.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 35px rgba(212,175,55,0.4),0 0 0 1px rgba(212,175,55,0.3)}
+.btn-primary{background:linear-gradient(135deg,#C9A84C,#DFC267);color:#0A0B0E;box-shadow:0 4px 15px rgba(201,168,76,0.2)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 35px rgba(201,168,76,0.3),0 0 0 1px rgba(201,168,76,0.25)}
 .btn-primary:active{transform:translateY(0) scale(0.98)}
-.btn-outline{background:transparent;border:1px solid #D4AF37;color:#D4AF37;box-shadow:inset 0 0 0 0 #D4AF37}
-.btn-outline:hover{background:#D4AF37;color:#0F1115;transform:translateY(-3px) scale(1.02);box-shadow:0 0 30px rgba(212,175,55,0.3),inset 0 0 0 1px #D4AF37}
+.btn-outline{background:transparent;border:1px solid #C9A84C;color:#C9A84C}
+.btn-outline:hover{background:#C9A84C;color:#0A0B0E;transform:translateY(-3px) scale(1.02);box-shadow:0 0 30px rgba(201,168,76,0.25)}
 .btn-outline:active{transform:translateY(0) scale(0.98)}
-.btn-dark{background:rgba(245,240,235,0.06);border:1px solid rgba(245,240,235,0.15);color:#F5F0EB;backdrop-filter:blur(4px)}
-.btn-dark:hover{background:rgba(245,240,235,0.12);border-color:#D4AF37;color:#D4AF37;transform:translateY(-3px) scale(1.02);box-shadow:0 0 25px rgba(212,175,55,0.15)}
+.btn-dark{background:rgba(236,230,221,0.05);border:1px solid rgba(236,230,221,0.12);color:#ECE6DD}
+.btn-dark:hover{background:rgba(236,230,221,0.1);border-color:#C9A84C;color:#C9A84C;transform:translateY(-3px) scale(1.02);box-shadow:0 0 25px rgba(201,168,76,0.12)}
 .btn-dark:active{transform:translateY(0) scale(0.98)}
 .btn-ico{display:inline-block;width:20px;height:20px;fill:currentColor;flex-shrink:0}
-.decorative-line{width:120px;height:2px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);margin:24px auto;position:relative}
-.decorative-line::before,.decorative-line::after{content:'';position:absolute;top:50%;width:6px;height:6px;border:1px solid #D4AF37;transform:translateY(-50%) rotate(45deg)}
-.decorative-line::before{left:-4px}.decorative-line::after{right:-4px}
 
-/* SVG ICONS */
-.ico-ship{width:28px;height:28px}
-.ico-ship-sm{width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:6px}
+/* SVG SPRITE */
+.ico{width:20px;height:20px;fill:none;stroke:#C9A84C;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ico-lg{width:36px;height:36px;stroke-width:1.5}
+.ico-sm{width:14px;height:14px;stroke-width:2}
+.ico-static{fill:#C9A84C;stroke:none}
 
 /* NAV */
 nav{position:fixed;top:0;width:100%;z-index:1000;padding:18px 0;transition:all 0.4s ease}
-nav.scrolled{background:rgba(15,17,21,0.95);backdrop-filter:blur(20px);padding:10px 0;border-bottom:1px solid rgba(212,175,55,0.12)}
+nav.scrolled{background:rgba(10,11,14,0.95);backdrop-filter:blur(20px);padding:10px 0;border-bottom:1px solid rgba(201,168,76,0.1)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 24px}
-.nav-logo{font-family:'Pirata One',cursive;font-size:1.8rem;color:#D4AF37;font-weight:400;letter-spacing:4px;display:flex;align-items:center;gap:10px}
-.nav-logo svg{width:22px;height:22px;fill:#D4AF37}
-.nav-links{display:flex;gap:32px;list-style:none;font-size:0.9rem;font-weight:500;text-transform:uppercase;letter-spacing:2px;font-family:'Pirata One',cursive}
-.nav-links a{color:#B9BEC8;transition:color 0.3s;position:relative;padding:4px 0}
-.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#D4AF37;transition:width 0.3s;box-shadow:0 0 6px #D4AF37}
-.nav-links a:hover{color:#D4AF37}
+.nav-logo{font-family:'Pirata One',cursive;font-size:1.8rem;color:#C9A84C;letter-spacing:4px;display:flex;align-items:center;gap:10px}
+.nav-links{display:flex;gap:32px;list-style:none;font-size:0.9rem;text-transform:uppercase;letter-spacing:2px;font-family:'Pirata One',cursive}
+.nav-links a{color:#A4AAB5;transition:color 0.3s;position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#C9A84C;transition:width 0.3s}
+.nav-links a:hover{color:#C9A84C}
 .nav-links a:hover::after{width:100%}
 .nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.nav-toggle span{width:28px;height:2px;background:#D4AF37;transition:all 0.3s;display:block}
+.nav-toggle span{width:28px;height:2px;background:#C9A84C;transition:all 0.3s;display:block}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/dmuxgamms/image/upload/v1782151794/unnamed_9_qgwlrh.webp') center/cover no-repeat;filter:brightness(0.45) saturate(1.1);transform:scale(1.05);animation:heroZoom 25s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/dmuxgamms/image/upload/v1782151794/unnamed_9_qgwlrh.webp') center/cover no-repeat;filter:brightness(0.4) saturate(1.05);transform:scale(1.05);animation:heroZoom 25s ease-in-out infinite alternate}
 @keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1.2)}}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.85) 100%);z-index:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,14,0.45) 0%,rgba(10,11,14,0.65) 50%,rgba(10,11,14,0.85) 100%);z-index:1}
+.hero-particle{position:absolute;width:2px;height:2px;background:#C9A84C;border-radius:50%;opacity:0;animation:particleFloat 6s ease-in-out infinite;z-index:0}
+@keyframes particleFloat{0%{opacity:0;transform:translateY(100vh) scale(0)}50%{opacity:0.5}100%{opacity:0;transform:translateY(-10vh) scale(1)}}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:950px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:0.9rem;text-transform:uppercase;letter-spacing:5px;color:#D4AF37;border:1px solid rgba(212,175,55,0.25);padding:8px 28px;margin-bottom:36px;font-family:'Pirata One',cursive;font-weight:400}
-.hero-eyebrow svg{width:14px;height:14px;fill:#D4AF37}
-.hero-title{font-family:'Pirata One',cursive;font-size:6rem;font-weight:400;color:#F5F0EB;letter-spacing:10px;line-height:1;margin-bottom:20px;text-shadow:0 4px 40px rgba(0,0,0,0.6);position:relative;display:inline-block}
-.hero-title::after{content:'';display:block;width:60%;height:2px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);margin:10px auto 0}
-.hero-title span{color:#D4AF37}
-.hero-subtitle{font-size:1.2rem;color:#B9BEC8;max-width:720px;margin:0 auto 44px;line-height:1.9;font-style:italic}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:0.9rem;text-transform:uppercase;letter-spacing:5px;color:#C9A84C;border:1px solid rgba(201,168,76,0.2);padding:8px 28px;margin-bottom:36px;font-family:'Pirata One',cursive}
+.hero-title{font-family:'Pirata One',cursive;font-size:6rem;color:#ECE6DD;letter-spacing:10px;line-height:1;margin-bottom:20px;text-shadow:0 4px 40px rgba(0,0,0,0.6);display:inline-block}
+.hero-title::after{content:'';display:block;width:60%;height:2px;background:linear-gradient(90deg,transparent,#C9A84C,transparent);margin:10px auto 0}
+.hero-title span{color:#C9A84C}
+.hero-subtitle{font-size:1.2rem;color:#A4AAB5;max-width:720px;margin:0 auto 44px;line-height:1.9;font-style:italic}
 .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;color:#B9BEC8;font-size:0.85rem;text-transform:uppercase;letter-spacing:4px;cursor:pointer;animation:float 2.5s ease-in-out infinite;font-family:'Pirata One',cursive}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;color:#A4AAB5;font-size:0.85rem;text-transform:uppercase;letter-spacing:4px;cursor:pointer;animation:float 2.5s ease-in-out infinite;font-family:'Pirata One',cursive}
 @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-12px)}}
-.hero-scroll-line{width:1px;height:40px;background:linear-gradient(180deg,#D4AF37,transparent)}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(180deg,#C9A84C,transparent)}
 
-/* SECTION HEADER DECORATION */
+/* SECTION HEADER */
 .section-header{text-align:center;margin-bottom:60px}
-.section-header svg{width:32px;height:32px;fill:#D4AF37;margin-bottom:12px;opacity:0.6}
+.section-header svg{margin-bottom:12px;opacity:0.5}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.about-text .gold-label{font-family:'Pirata One',cursive;font-size:1.1rem;color:#D4AF37;margin-bottom:16px;letter-spacing:3px;display:flex;align-items:center;gap:10px}
-.about-text .gold-label svg{width:16px;height:16px;fill:#D4AF37}
-.about-text h2{font-family:'Pirata One',cursive;font-size:2.8rem;margin-bottom:24px;line-height:1.2;letter-spacing:2px;font-weight:400}
-.about-text p{color:#B9BEC8;margin-bottom:18px;font-size:1.1rem;line-height:1.8}
-.about-quote{font-family:'Pirata One',cursive;font-size:1.6rem;color:#D4AF37;padding:32px 44px;border-left:2px solid #D4AF37;margin:28px 0;background:rgba(212,175,55,0.04);position:relative}
-.about-quote::before{content:'"';position:absolute;top:8px;left:14px;font-size:2.5rem;color:#D4AF37;opacity:0.3;font-family:'Pirata One',cursive}
-.about-image{position:relative;border-radius:4px;overflow:hidden;border:1px solid rgba(212,175,55,0.12);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.about-label{font-family:'Pirata One',cursive;font-size:1.1rem;color:#C9A84C;margin-bottom:16px;letter-spacing:3px;display:flex;align-items:center;gap:10px}
+.about-text h2{font-family:'Pirata One',cursive;font-size:2.8rem;margin-bottom:24px;line-height:1.2;letter-spacing:2px;color:#ECE6DD}
+.about-text p{color:#A4AAB5;margin-bottom:18px;font-size:1.1rem;line-height:1.8}
+.about-quote{font-family:'Pirata One',cursive;font-size:1.5rem;color:#C9A84C;padding:28px 40px;border-left:2px solid #C9A84C;margin:28px 0;background:rgba(201,168,76,0.03);position:relative}
+.about-quote::before{content:'"';position:absolute;top:6px;left:14px;font-size:2.5rem;color:#C9A84C;opacity:0.2;font-family:'Pirata One',cursive}
+.about-image{position:relative;border-radius:2px;overflow:hidden;border:1px solid rgba(201,168,76,0.1);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .about-image img{width:100%;height:520px;object-fit:cover;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
 .about-image:hover img{transform:scale(1.06)}
-.about-image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,0.08),transparent 50%);pointer-events:none}
-.about-image .corner{position:absolute;width:24px;height:24px;border-color:#D4AF37;border-style:solid;opacity:0.3;z-index:2}
-.about-image .corner-tl{top:8px;left:8px;border-width:1px 0 0 1px}
-.about-image .corner-tr{top:8px;right:8px;border-width:1px 1px 0 0}
-.about-image .corner-bl{bottom:8px;left:8px;border-width:0 0 1px 1px}
-.about-image .corner-br{bottom:8px;right:8px;border-width:0 1px 1px 0}
+.about-image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.06),transparent 50%);pointer-events:none}
+.about-corner{position:absolute;width:20px;height:20px;border-color:#C9A84C;border-style:solid;opacity:0.15;z-index:2}
+.about-corner.tl{top:6px;left:6px;border-width:1px 0 0 1px}
+.about-corner.tr{top:6px;right:6px;border-width:1px 1px 0 0}
+.about-corner.bl{bottom:6px;left:6px;border-width:0 0 1px 1px}
+.about-corner.br{bottom:6px;right:6px;border-width:0 1px 1px 0}
 
 /* FEATURES */
-.features-section{background:#171A21;padding:80px 0;position:relative}
-.features-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.12),transparent)}
-.features-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.12),transparent)}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;margin-top:10px}
-.feature-card{background:#1E232D;border:1px solid rgba(212,175,55,0.08);padding:44px 20px 36px;text-align:center;transition:all 0.4s ease;position:relative;overflow:hidden}
-.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#D4AF37,transparent);transform:scaleX(0);transition:transform 0.5s}
+.features-wrap{background:#12151C;padding:80px 0;position:relative}
+.features-wrap::before,.features-wrap::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.08),transparent)}
+.features-wrap::before{top:0}.features-wrap::after{bottom:0}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px}
+.feature-card{background:#181C26;border:1px solid rgba(201,168,76,0.06);padding:44px 20px 36px;text-align:center;transition:all 0.4s ease;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C9A84C,transparent);transform:scaleX(0);transition:transform 0.5s}
 .feature-card:hover::before{transform:scaleX(1)}
-.feature-card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,0.25);box-shadow:0 16px 50px rgba(0,0,0,0.4),0 0 0 1px rgba(212,175,55,0.05)}
-.feature-card svg{width:40px;height:40px;fill:#D4AF37;margin-bottom:18px;transition:transform 0.4s}
-.feature-card:hover svg{transform:scale(1.15) rotate(-5deg)}
-.feature-card h3{font-family:'Pirata One',cursive;color:#D4AF37;font-size:1.2rem;letter-spacing:2px;text-transform:uppercase;font-weight:400}
+.feature-card:hover{transform:translateY(-5px);border-color:rgba(201,168,76,0.18);box-shadow:0 16px 50px rgba(0,0,0,0.4)}
+.feature-card svg{width:36px;height:36px;margin-bottom:18px;transition:transform 0.4s;stroke:#C9A84C;fill:none;stroke-width:1.5}
+.feature-card:hover svg{transform:scale(1.1) rotate(-4deg)}
+.feature-card h3{font-family:'Pirata One',cursive;color:#C9A84C;font-size:1.15rem;letter-spacing:2px;text-transform:uppercase;font-weight:400}
 
 /* MENU */
-.menu-bg{position:absolute;inset:0;opacity:0.02;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(212,175,55,0.03) 40px,rgba(212,175,55,0.03) 41px);pointer-events:none}
+.menu-bg{position:absolute;inset:0;opacity:0.015;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(201,168,76,0.02) 40px,rgba(201,168,76,0.02) 41px);pointer-events:none}
 .menu-categories{display:flex;justify-content:center;gap:8px;margin-bottom:50px;flex-wrap:wrap}
-.menu-cat{font-family:'Pirata One',cursive;padding:10px 30px;background:transparent;border:1px solid rgba(212,175,55,0.2);color:#B9BEC8;cursor:pointer;transition:all 0.35s;font-size:1.05rem;text-transform:uppercase;letter-spacing:2px}
-.menu-cat.active,.menu-cat:hover{background:#D4AF37;color:#0F1115;border-color:#D4AF37;box-shadow:0 0 25px rgba(212,175,55,0.2);transform:translateY(-1px)}
+.menu-cat{font-family:'Pirata One',cursive;padding:10px 30px;background:transparent;border:1px solid rgba(201,168,76,0.15);color:#A4AAB5;cursor:pointer;transition:all 0.35s;font-size:1.05rem;text-transform:uppercase;letter-spacing:2px}
+.menu-cat.active,.menu-cat:hover{background:#C9A84C;color:#0A0B0E;border-color:#C9A84C;box-shadow:0 0 20px rgba(201,168,76,0.15);transform:translateY(-1px)}
 .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.menu-item{background:#1E232D;border:1px solid rgba(212,175,55,0.06);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s;position:relative}
-.menu-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#D4AF37;transform:scaleY(0);transition:transform 0.3s}
-.menu-item:hover{background:#222834;border-color:rgba(212,175,55,0.15);padding-left:28px}
+.menu-item{background:#181C26;border:1px solid rgba(201,168,76,0.05);padding:18px 22px;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s;position:relative}
+.menu-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:#C9A84C;transform:scaleY(0);transition:transform 0.3s}
+.menu-item:hover{background:#1C2130;border-color:rgba(201,168,76,0.12);padding-left:28px}
 .menu-item:hover::before{transform:scaleY(1)}
-.menu-item-info h4{font-family:'Pirata One',cursive;font-size:1.2rem;color:#F5F0EB;margin-bottom:2px;letter-spacing:1px;font-weight:400}
-.menu-item-info p{font-size:0.95rem;color:#B9BEC8;font-style:italic}
-.menu-item-price{font-family:'Pirata One',cursive;font-size:1.3rem;color:#D4AF37;white-space:nowrap;margin-left:20px}
+.menu-item-info h4{font-family:'Pirata One',cursive;font-size:1.2rem;color:#ECE6DD;margin-bottom:2px;letter-spacing:1px}
+.menu-item-info p{font-size:0.95rem;color:#A4AAB5;font-style:italic}
+.menu-item-price{font-family:'Pirata One',cursive;font-size:1.3rem;color:#C9A84C;white-space:nowrap;margin-left:20px}
 
 /* GALLERY */
-.gallery-section{background:#171A21}
+.gallery-section{background:#12151C}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.gallery-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid rgba(212,175,55,0.06);transition:all 0.4s}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid rgba(201,168,76,0.04);transition:all 0.4s}
 .gallery-item img{width:100%;height:100%;object-fit:cover;transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
 .gallery-item:hover img{transform:scale(1.12)}
-.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(0,0,0,0.7));opacity:0;transition:opacity 0.4s;display:flex;align-items:center;justify-content:center}
+.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(0,0,0,0.65));opacity:0;transition:opacity 0.4s;display:flex;align-items:center;justify-content:center}
 .gallery-item:hover .gallery-item-overlay{opacity:1}
-.gallery-item-overlay svg{width:36px;height:36px;fill:#D4AF37;transform:scale(0.4);transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1)}
+.gallery-item-overlay svg{width:32px;height:32px;stroke:#C9A84C;fill:none;stroke-width:1.5;transform:scale(0.4);transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1)}
 .gallery-item:hover .gallery-item-overlay svg{transform:scale(1)}
 
 /* LIGHTBOX */
-.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.96);display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(10,11,14,0.97);display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
 .lightbox.active{display:flex}
-.lightbox-img{max-width:90vw;max-height:90vh;border-radius:2px;border:1px solid rgba(212,175,55,0.15);box-shadow:0 30px 80px rgba(0,0,0,0.9);transform:scale(0.92);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
+.lightbox-img{max-width:90vw;max-height:90vh;border-radius:2px;border:1px solid rgba(201,168,76,0.12);box-shadow:0 30px 80px rgba(0,0,0,0.9);transform:scale(0.92);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
 .lightbox.active .lightbox-img{transform:scale(1)}
-.lightbox-close{position:absolute;top:30px;right:40px;cursor:pointer;background:none;border:none;z-index:2001;color:#D4AF37;transition:transform 0.4s;display:flex;align-items:center;justify-content:center}
-.lightbox-close svg{width:28px;height:28px;stroke:#D4AF37;stroke-width:2;fill:none}
+.lightbox-close{position:absolute;top:30px;right:40px;cursor:pointer;background:none;border:none;z-index:2001;color:#C9A84C;transition:transform 0.4s;display:flex}
+.lightbox-close svg{width:26px;height:26px;stroke:#C9A84C;stroke-width:2;fill:none}
 .lightbox-close:hover{transform:rotate(180deg) scale(1.1)}
-.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;background:none;border:none;z-index:2001;color:#D4AF37;padding:16px;transition:all 0.3s}
-.lightbox-nav svg{width:28px;height:28px;fill:none;stroke:#D4AF37;stroke-width:2}
-.lightbox-nav:hover{color:#F0C75E;transform:translateY(-50%) scale(1.2)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;background:none;border:none;z-index:2001;color:#C9A84C;padding:16px;transition:all 0.3s}
+.lightbox-nav svg{width:26px;height:26px;stroke:#C9A84C;stroke-width:2;fill:none}
+.lightbox-nav:hover{color:#DFC267;transform:translateY(-50%) scale(1.2)}
 .lightbox-prev{left:16px}.lightbox-next{right:16px}
-.lightbox-counter{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#B9BEC8;font-size:0.95rem;letter-spacing:3px;font-family:'Pirata One',cursive}
+.lightbox-counter{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#A4AAB5;font-size:0.95rem;letter-spacing:3px;font-family:'Pirata One',cursive}
 
 /* REVIEWS */
 .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.review-card{background:#1E232D;border:1px solid rgba(212,175,55,0.08);padding:32px;transition:all 0.35s;position:relative}
-.review-card::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.3),transparent);opacity:0;transition:opacity 0.35s}
-.review-card:hover{transform:translateY(-5px);border-color:rgba(212,175,55,0.2);box-shadow:0 16px 50px rgba(0,0,0,0.3)}
+.review-card{background:#181C26;border:1px solid rgba(201,168,76,0.06);padding:32px;transition:all 0.35s;position:relative}
+.review-card::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.2),transparent);opacity:0;transition:opacity 0.35s}
+.review-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.15);box-shadow:0 16px 50px rgba(0,0,0,0.3)}
 .review-card:hover::after{opacity:1}
-.review-stars{color:#D4AF37;font-size:1rem;margin-bottom:14px;letter-spacing:3px}
-.review-text{color:#B9BEC8;font-style:italic;line-height:1.9;margin-bottom:16px;font-size:1rem}
-.review-author{font-family:'Pirata One',cursive;color:#D4AF37;font-size:1.1rem;letter-spacing:2px}
+.review-stars{color:#C9A84C;font-size:1rem;margin-bottom:14px;letter-spacing:3px}
+.review-text{color:#A4AAB5;font-style:italic;line-height:1.9;margin-bottom:16px;font-size:1rem}
+.review-author{font-family:'Pirata One',cursive;color:#C9A84C;font-size:1.1rem;letter-spacing:2px}
 .review-badge{text-align:center;margin-bottom:50px}
-.review-badge-inner{display:inline-flex;align-items:center;gap:16px;background:#1E232D;border:1px solid rgba(212,175,55,0.12);padding:18px 36px;position:relative}
-.review-badge-inner::before,.review-badge-inner::after{content:'';position:absolute;width:12px;height:12px;border-color:#D4AF37;border-style:solid;opacity:0.2}
+.review-badge-inner{display:inline-flex;align-items:center;gap:16px;background:#181C26;border:1px solid rgba(201,168,76,0.1);padding:18px 36px;position:relative}
+.review-badge-inner::before,.review-badge-inner::after{content:'';position:absolute;width:12px;height:12px;border-color:#C9A84C;border-style:solid;opacity:0.15}
 .review-badge-inner::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
 .review-badge-inner::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
-.review-badge-stars{font-size:1.3rem;color:#D4AF37;letter-spacing:2px}
-.review-badge-text{font-size:1.05rem;color:#F5F0EB}
-.review-badge-text span{color:#D4AF37;font-family:'Pirata One',cursive;font-size:1.2rem;letter-spacing:1px}
+.review-badge-stars{font-size:1.3rem;color:#C9A84C;letter-spacing:2px}
+.review-badge-text{font-size:1.05rem;color:#ECE6DD}
+.review-badge-text span{color:#C9A84C;font-family:'Pirata One',cursive;font-size:1.2rem;letter-spacing:1px}
 
 /* RESERVAS */
-.reservas{background:#171A21}
-.reservas-form{max-width:600px;margin:0 auto;background:#1E232D;border:1px solid rgba(212,175,55,0.1);padding:50px;position:relative}
-.reservas-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#D4AF37,transparent)}
+.reservas{background:#12151C}
+.reservas-form{max-width:600px;margin:0 auto;background:#181C26;border:1px solid rgba(201,168,76,0.08);padding:50px;position:relative}
+.reservas-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#C9A84C,transparent)}
 .form-group{margin-bottom:22px}
-.form-group label{display:flex;align-items:center;gap:8px;font-size:0.9rem;color:#B9BEC8;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;font-family:'Pirata One',cursive;font-weight:400}
-.form-group label svg{width:12px;height:12px;fill:#D4AF37}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;background:#171A21;border:1px solid rgba(212,175,55,0.1);color:#F5F0EB;font-size:1rem;transition:all 0.3s;font-family:'Cormorant Garamond',serif}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#D4AF37;box-shadow:0 0 0 1px rgba(212,175,55,0.15)}
+.form-group label{display:flex;align-items:center;gap:8px;font-size:0.9rem;color:#A4AAB5;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;font-family:'Pirata One',cursive}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;background:#12151C;border:1px solid rgba(201,168,76,0.08);color:#ECE6DD;font-size:1rem;transition:all 0.3s;font-family:'Cormorant Garamond',serif}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#C9A84C;box-shadow:0 0 0 1px rgba(201,168,76,0.1)}
 .form-group textarea{resize:vertical;min-height:100px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.form-submit{width:100%;padding:18px;background:linear-gradient(135deg,#D4AF37,#F0C75E);color:#0F1115;border:none;font-family:'Pirata One',cursive;font-size:1.3rem;cursor:pointer;transition:all 0.35s;text-transform:uppercase;letter-spacing:3px;position:relative;overflow:hidden}
-.form-submit::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:left 0.6s}
+.form-submit{width:100%;padding:18px;background:linear-gradient(135deg,#C9A84C,#DFC267);color:#0A0B0E;border:none;font-family:'Pirata One',cursive;font-size:1.3rem;cursor:pointer;transition:all 0.35s;text-transform:uppercase;letter-spacing:3px;position:relative;overflow:hidden}
+.form-submit::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left 0.6s}
 .form-submit:hover::before{left:100%}
-.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(212,175,55,0.3);letter-spacing:4px}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(201,168,76,0.25);letter-spacing:4px}
 .form-submit:active{transform:translateY(0)}
 .form-message{margin-top:20px;text-align:center;font-size:1rem;display:none;font-style:italic}
-.form-message.success{display:block;color:#D4AF37}
-.form-message.error{display:block;color:#ff6b6b}
+.form-message.success{display:block;color:#C9A84C}
+.form-message.error{display:block;color:#c0392b}
 
 /* LOCATION */
-.location-section{background:#171A21}
+.location-section{background:#12151C}
 .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
-.location-info h3{font-family:'Pirata One',cursive;font-size:2rem;color:#D4AF37;margin-bottom:24px;letter-spacing:2px;font-weight:400;display:flex;align-items:center;gap:12px}
-.location-info h3 svg{width:22px;height:22px;fill:#D4AF37}
-.location-info p{color:#B9BEC8;margin-bottom:6px;font-size:1.05rem;line-height:1.8}
+.location-info h3{font-family:'Pirata One',cursive;font-size:2rem;color:#C9A84C;margin-bottom:24px;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.location-info p{color:#A4AAB5;margin-bottom:6px;font-size:1.05rem;line-height:1.8}
 .location-detail{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
-.location-detail svg{width:16px;height:16px;fill:#D4AF37;flex-shrink:0;margin-top:5px}
+.location-detail svg{width:16px;height:16px;flex-shrink:0;margin-top:4px}
 .location-buttons{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
-.location-map{width:100%;height:420px;overflow:hidden;border:1px solid rgba(212,175,55,0.1);position:relative}
+.location-map{width:100%;height:420px;overflow:hidden;border:1px solid rgba(201,168,76,0.08);position:relative}
 .location-map iframe{width:100%;height:100%;border:0}
-.location-coords{font-family:'Pirata One',cursive;color:rgba(212,175,55,0.25);font-size:0.85rem;letter-spacing:3px;margin-top:24px;text-align:center}
+.location-coords{font-family:'Pirata One',cursive;color:rgba(201,168,76,0.2);font-size:0.85rem;letter-spacing:3px;margin-top:24px;text-align:center}
 
 /* FOOTER */
-footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80px 0 30px}
+footer{background:#0A0B0E;border-top:1px solid rgba(201,168,76,0.05);padding:80px 0 30px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:50px}
 .footer-brand .nav-logo{font-size:2rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.footer-brand p{color:#B9BEC8;font-size:1rem;max-width:320px;line-height:1.8;font-style:italic}
-.footer-col h4{font-family:'Pirata One',cursive;color:#D4AF37;font-size:1.1rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px;font-weight:400;display:flex;align-items:center;gap:8px}
-.footer-col h4 svg{width:14px;height:14px;fill:#D4AF37}
+.footer-brand p{color:#A4AAB5;font-size:1rem;max-width:320px;line-height:1.8;font-style:italic}
+.footer-col h4{font-family:'Pirata One',cursive;color:#C9A84C;font-size:1.1rem;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px;display:flex;align-items:center;gap:8px}
 .footer-col ul{list-style:none}
 .footer-col ul li{margin-bottom:10px}
-.footer-col ul li a{color:#B9BEC8;font-size:1rem;transition:color 0.3s;display:flex;align-items:center;gap:8px}
-.footer-col ul li a:hover{color:#D4AF37}
-.footer-col ul li a svg{width:10px;height:10px;fill:#B9BEC8;transition:fill 0.3s}
-.footer-col ul li a:hover svg{fill:#D4AF37}
+.footer-col ul li a{color:#A4AAB5;font-size:1rem;transition:color 0.3s;display:flex;align-items:center;gap:8px}
+.footer-col ul li a:hover{color:#C9A84C}
+.footer-col ul li a svg{width:10px;height:10px;stroke:#A4AAB5;fill:none;transition:stroke 0.3s}
+.footer-col ul li a:hover svg{stroke:#C9A84C}
 .footer-social{display:flex;gap:14px;margin-top:24px}
-.footer-social a{width:44px;height:44px;border:1px solid rgba(212,175,55,0.15);display:flex;align-items:center;justify-content:center;transition:all 0.3s}
-.footer-social a svg{width:18px;height:18px;fill:#D4AF37;transition:fill 0.3s}
-.footer-social a:hover{background:#D4AF37;transform:translateY(-4px);box-shadow:0 8px 25px rgba(212,175,55,0.2)}
-.footer-social a:hover svg{fill:#0F1115}
-.footer-bottom{border-top:1px solid rgba(212,175,55,0.06);padding-top:30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-bottom p{color:#B9BEC8;font-size:0.9rem}
-.footer-compass{color:rgba(212,175,55,0.12);font-size:0.8rem;letter-spacing:6px;font-family:'Pirata One',cursive;display:flex;align-items:center;gap:8px}
-.footer-compass svg{width:14px;height:14px;fill:rgba(212,175,55,0.12)}
+.footer-social a{width:44px;height:44px;border:1px solid rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.footer-social a svg{width:18px;height:18px;stroke:#C9A84C;fill:none;transition:all 0.3s}
+.footer-social a:hover{background:#C9A84C;transform:translateY(-4px);box-shadow:0 8px 25px rgba(201,168,76,0.15)}
+.footer-social a:hover svg{stroke:#0A0B0E}
+.footer-bottom{border-top:1px solid rgba(201,168,76,0.05);padding-top:30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-bottom p{color:#A4AAB5;font-size:0.9rem}
+.footer-compass{color:rgba(201,168,76,0.1);font-size:0.8rem;letter-spacing:6px;font-family:'Pirata One',cursive;display:flex;align-items:center;gap:8px}
 
-/* DECORATIVE BACKGROUND ELEMENTS */
-.bg-compass{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:350px;height:350px;opacity:0.025;pointer-events:none}
-.bg-compass svg{width:100%;height:100%}
+/* DECORATIVE BG */
+.bg-compass{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:350px;height:350px;opacity:0.02;pointer-events:none}
+.bg-compass svg{width:100%;height:100%;stroke:#C9A84C;fill:none}
 .bg-anchor{position:absolute;left:-60px;bottom:-40px;width:180px;height:180px;opacity:0.015;pointer-events:none;transform:rotate(-15deg)}
-.bg-anchor svg{width:100%;height:100%}
+.bg-anchor svg{width:100%;height:100%;stroke:#C9A84C;fill:none}
 .bg-ropes{position:absolute;top:0;left:0;right:0;height:100%;pointer-events:none;overflow:hidden}
-.bg-ropes::before,.bg-ropes::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:repeating-linear-gradient(180deg,rgba(212,175,55,0.03) 0px,rgba(212,175,55,0.03) 20px,transparent 20px,transparent 40px)}
+.bg-ropes::before,.bg-ropes::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:repeating-linear-gradient(180deg,rgba(201,168,76,0.02) 0px,rgba(201,168,76,0.02) 20px,transparent 20px,transparent 40px)}
 .bg-ropes::before{left:40px}.bg-ropes::after{right:40px}
 
-/* ANIMATIONS */
+/* RIPPLE */
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.2);transform:scale(0);animation:rippleAnim 0.6s ease-out;pointer-events:none}
+@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
+
+/* FADE ANIMATION */
 .fade-in{opacity:0;transform:translateY(35px);transition:all 0.9s cubic-bezier(0.25,0.46,0.45,0.94)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
-
-/* SVG SHAPES FOR ICONS */
-.ship-wheel{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round}
-.anchor-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.compass-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.rope-shape{fill:none;stroke:#D4AF37;stroke-width:1.5;stroke-linecap:round}
-.mast-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.crossbones-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round}
-.map-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.barrel-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round}
-.music-shape{fill:none;stroke:#D4AF37;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* BUTTON RIPPLE */
-.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.3);transform:scale(0);animation:rippleAnim 0.6s ease-out;pointer-events:none}
-@keyframes rippleAnim{to{transform:scale(4);opacity:0}}
 
 /* RESPONSIVE */
 @media(max-width:968px){
@@ -254,7 +236,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
 }
 @media(max-width:768px){
-.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,17,21,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid rgba(212,175,55,0.1)}
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,11,14,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid rgba(201,168,76,0.08)}
 .nav-links.open{display:flex}
 .nav-toggle{display:flex}
 .hero-title{font-size:3.5rem;letter-spacing:6px}
@@ -275,34 +257,33 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 </head>
 <body>
 
-<!-- SVG SPRITE (hidden) -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
-  <symbol id="wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" class="ship-wheel"/><circle cx="12" cy="12" r="3" class="ship-wheel"/><line x1="12" y1="1" x2="12" y2="5" class="ship-wheel"/><line x1="12" y1="19" x2="12" y2="23" class="ship-wheel"/><line x1="1" y1="12" x2="5" y2="12" class="ship-wheel"/><line x1="19" y1="12" x2="23" y2="12" class="ship-wheel"/><line x1="3.5" y1="3.5" x2="6.4" y2="6.4" class="ship-wheel"/><line x1="17.6" y1="17.6" x2="20.5" y2="20.5" class="ship-wheel"/><line x1="3.5" y1="20.5" x2="6.4" y2="17.6" class="ship-wheel"/><line x1="17.6" y1="6.4" x2="20.5" y2="3.5" class="ship-wheel"/></symbol>
-  <symbol id="anchor" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21" class="anchor-shape"/><line x1="12" y1="21" x2="8" y2="17" class="anchor-shape"/><line x1="12" y1="21" x2="16" y2="17" class="anchor-shape"/><line x1="4" y1="10" x2="20" y2="10" class="anchor-shape"/><circle cx="12" cy="5" r="1.5" class="anchor-shape"/><line x1="12" y1="3" x2="12" y2="1" class="anchor-shape"/></symbol>
-  <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" class="compass-shape"/><polygon points="12,4 14,12 12,20 10,12" class="compass-shape"/><polygon points="7,12 12,10 17,12 12,14" class="compass-shape"/><circle cx="12" cy="12" r="1" class="compass-shape"/></symbol>
-  <symbol id="ship" viewBox="0 0 24 24"><polygon points="6,16 18,16 21,20 3,20" class="mast-shape"/><line x1="12" y1="8" x2="12" y2="16" class="mast-shape"/><polygon points="12,8 17,14 12,14" class="mast-shape"/><line x1="6" y1="16" x2="6" y2="19" class="mast-shape"/><line x1="18" y1="16" x2="18" y2="19" class="mast-shape"/><path d="M3 20 C3 22 6 23 12 23 C18 23 21 22 21 20" class="mast-shape"/></symbol>
-  <symbol id="crossbones" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5" class="crossbones-shape"/><line x1="6" y1="20" x2="18" y2="8" class="crossbones-shape"/><line x1="6" y1="8" x2="18" y2="20" class="crossbones-shape"/></symbol>
-  <symbol id="barrel" viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="14" rx="2" class="barrel-shape"/><line x1="6" y1="9" x2="18" y2="9" class="barrel-shape"/><line x1="6" y1="15" x2="18" y2="15" class="barrel-shape"/><line x1="12" y1="5" x2="12" y2="19" class="barrel-shape"/></symbol>
-  <symbol id="music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13" class="music-shape"/><circle cx="6" cy="18" r="3" class="music-shape"/><circle cx="18" cy="16" r="3" class="music-shape"/><line x1="9" y1="12" x2="21" y2="10" class="music-shape"/></symbol>
-  <symbol id="glass" viewBox="0 0 24 24"><path d="M6 3h12l-1.5 16H7.5L6 3z" class="barrel-shape"/><line x1="9" y1="3" x2="9" y2="7" class="barrel-shape"/><line x1="12" y1="3" x2="12" y2="7" class="barrel-shape"/><line x1="15" y1="3" x2="15" y2="7" class="barrel-shape"/></symbol>
-  <symbol id="cheers" viewBox="0 0 24 24"><path d="M6 8l3 13h6l3-13" class="barrel-shape"/><line x1="4" y1="8" x2="20" y2="8" class="barrel-shape"/></symbol>
-  <symbol id="map" viewBox="0 0 24 24"><path d="M3 5v14l6-3 6 3 6-3V5l-6 3-6-3-6 3z" class="map-shape"/><line x1="9" y1="2" x2="9" y2="16" class="map-shape"/><line x1="15" y1="5" x2="15" y2="19" class="map-shape"/></symbol>
-  <symbol id="x" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2"/><line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="chevron-left" viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="chevron-right" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
-  <symbol id="ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" class="compass-shape"/><circle cx="12" cy="12" r="5" class="compass-shape"/><circle cx="17.5" cy="6.5" r="1.5" class="compass-shape"/></symbol>
-  <symbol id="fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" class="compass-shape"/></symbol>
-  <symbol id="tt" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" class="compass-shape"/><path d="M16 8a3 3 0 0 1-3 3 3 3 0 0 1-3-3v-1a3 3 0 0 0-3 3v2a6 6 0 0 0 6 6h0a6 6 0 0 0 6-6v-2a3 3 0 0 0-3-3z" class="compass-shape"/><line x1="10" y1="11" x2="10" y2="14" class="compass-shape"/><line x1="14" y1="11" x2="14" y2="14" class="compass-shape"/></symbol>
-  <symbol id="loc" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" class="compass-shape"/><circle cx="12" cy="10" r="3" class="compass-shape"/></symbol>
-  <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" class="compass-shape"/></symbol>
-  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" class="compass-shape"/><polyline points="12,6 12,12 16,14" class="compass-shape"/></symbol>
-  <symbol id="arrow" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19" class="compass-shape"/><polyline points="19,12 12,19 5,12" class="compass-shape"/></symbol>
+  <symbol id="wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4M4.4 4.4l2.8 2.8M16.8 16.8l2.8 2.8M4.4 19.6l2.8-2.8M16.8 7.2l2.8-2.8"/></symbol>
+  <symbol id="anchor" viewBox="0 0 24 24"><path d="M12 4v15M12 19l-4-4M12 19l4-4M4 10h16"/><circle cx="12" cy="5.5" r="1.5"/><path d="M12 4V2"/></symbol>
+  <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><polygon points="12,4 14,12 12,20 10,12"/><polygon points="7,12 12,10 17,12 12,14"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="ship" viewBox="0 0 24 24"><polygon points="6,16 18,16 21,20 3,20"/><line x1="12" y1="8" x2="12" y2="16"/><polygon points="12,8 17,14 12,14"/><line x1="6" y1="16" x2="6" y2="19"/><line x1="18" y1="16" x2="18" y2="19"/><path d="M3 20c0 2 3 3 9 3s9-1 9-3"/></symbol>
+  <symbol id="crossbones" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><line x1="6" y1="20" x2="18" y2="8"/><line x1="6" y1="8" x2="18" y2="20"/></symbol>
+  <symbol id="barrel" viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="14" rx="2"/><line x1="6" y1="9" x2="18" y2="9"/><line x1="6" y1="15" x2="18" y2="15"/><line x1="12" y1="5" x2="12" y2="19"/></symbol>
+  <symbol id="music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><line x1="9" y1="12" x2="21" y2="10"/></symbol>
+  <symbol id="glass" viewBox="0 0 24 24"><path d="M6 3h12l-1.5 16H7.5L6 3z"/><line x1="9" y1="3" x2="9" y2="7"/><line x1="12" y1="3" x2="12" y2="7"/><line x1="15" y1="3" x2="15" y2="7"/></symbol>
+  <symbol id="cheers" viewBox="0 0 24 24"><path d="M6 8l3 13h6l3-13"/><line x1="4" y1="8" x2="20" y2="8"/></symbol>
+  <symbol id="map" viewBox="0 0 24 24"><path d="M3 5v14l6-3 6 3 6-3V5l-6 3-6-3-6 3z"/><line x1="9" y1="2" x2="9" y2="16"/><line x1="15" y1="5" x2="15" y2="19"/></symbol>
+  <symbol id="loc" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></symbol>
+  <symbol id="xmark" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></symbol>
+  <symbol id="ch-left" viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></symbol>
+  <symbol id="ch-right" viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></symbol>
+  <symbol id="fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="tt" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8a3 3 0 0 1-3 3 3 3 0 0 1-3-3v-1a3 3 0 0 0-3 3v2a6 6 0 0 0 6 6h0a6 6 0 0 0 6-6v-2a3 3 0 0 0-3-3z"/><line x1="10" y1="11" x2="10" y2="14"/><line x1="14" y1="11" x2="14" y2="14"/></symbol>
 </svg>
 
 <!-- NAV -->
 <nav id="navbar">
 <div class="nav-inner">
-<a href="#" class="nav-logo"><svg><use href="#ship"/></svg>GALEON</a>
+<a href="#" class="nav-logo"><svg class="ico" width="22" height="22"><use href="#ship"/></svg>GALEON</a>
 <ul class="nav-links" id="navLinks">
 <li><a href="#nosotros">Nosotros</a></li>
 <li><a href="#menu">Carta</a></li>
@@ -322,7 +303,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <div class="hero-bg"></div>
 <div class="hero-overlay"></div>
 <div class="hero-content">
-<div class="hero-eyebrow"><svg><use href="#compass"/></svg>Bienvenido a bordo</div>
+<div class="hero-eyebrow"><svg class="ico" width="14" height="14"><use href="#compass"/></svg>Bienvenido a bordo</div>
 <h1 class="hero-title">GALEON<br><span>TAVERN</span></h1>
 <p class="hero-subtitle">Copas, cerveza, karaoke, salsa, bachata y el mejor ambiente del Aljarafe dentro de una autentica taberna inspirada en los grandes galeones.</p>
 <div class="hero-buttons">
@@ -332,7 +313,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <a href="https://www.google.com/maps/search/?api=1&query=37.3522,-6.0645" target="_blank" rel="noopener" class="btn btn-dark"><svg class="btn-ico"><use href="#loc"/></svg>Como llegar</a>
 </div>
 </div>
-<div class="hero-scroll" onclick="document.getElementById('nosotros').scrollIntoView()">
+<div class="hero-scroll" onclick="document.getElementById('nosotros').scrollIntoView({behavior:'smooth'})">
 <span>Descubrir el Galeon</span>
 <div class="hero-scroll-line"></div>
 </div>
@@ -341,13 +322,11 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <!-- NOSOTROS -->
 <section class="section" id="nosotros">
 <div class="bg-ropes"></div>
-<div class="bg-compass">
-<svg viewBox="0 0 100 100"><use href="#compass" width="100" height="100"/></svg>
-</div>
+<div class="bg-compass"><svg viewBox="0 0 24 24"><use href="#compass"/></svg></div>
 <div class="container">
 <div class="about-grid">
 <div class="about-text fade-in">
-<div class="gold-label"><svg><use href="#compass"/></svg>Galeon Tavern</div>
+<div class="about-label"><svg class="ico" width="16" height="16"><use href="#compass"/></svg>Galeon Tavern</div>
 <h2>Mas que un bar, un puerto de encuentro.</h2>
 <p>En Galeon Tavern cada visita se convierte en una historia.</p>
 <p>Ubicados en el corazon del Poligono PISA, hemos creado un espacio unico donde las mejores copas, la musica, el karaoke y el baile conviven bajo una estetica inspirada en los legendarios galeones.</p>
@@ -355,10 +334,10 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <div class="about-quote">No servimos solo copas. Creamos recuerdos.</div>
 </div>
 <div class="about-image fade-in">
-<div class="corner corner-tl"></div>
-<div class="corner corner-tr"></div>
-<div class="corner corner-bl"></div>
-<div class="corner corner-br"></div>
+<div class="about-corner tl"></div>
+<div class="about-corner tr"></div>
+<div class="about-corner bl"></div>
+<div class="about-corner br"></div>
 <img src="https://res.cloudinary.com/dmuxgamms/image/upload/v1782151789/unnamed_13_kctplq.webp" alt="Galeon Tavern interior" loading="lazy">
 </div>
 </div>
@@ -366,7 +345,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 </section>
 
 <!-- FEATURES -->
-<section class="features-section" id="features">
+<div class="features-wrap">
 <div class="container">
 <div class="features-grid fade-in">
 <div class="feature-card"><svg><use href="#glass"/></svg><h3>Copas Premium</h3></div>
@@ -376,15 +355,15 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <div class="feature-card"><svg><use href="#ship"/></svg><h3>Eventos y Musica en Directo</h3></div>
 </div>
 </div>
-</section>
+</div>
 
 <!-- MENU -->
 <section class="section" id="menu">
 <div class="menu-bg"></div>
-<div class="bg-anchor"><svg viewBox="0 0 24 24"><use href="#anchor" width="24" height="24"/></svg></div>
+<div class="bg-anchor"><svg viewBox="0 0 24 24"><use href="#anchor"/></svg></div>
 <div class="container">
 <div class="section-header fade-in">
-<svg><use href="#barrel"/></svg>
+<svg class="ico ico-lg" width="32" height="32"><use href="#barrel"/></svg>
 <h2 class="section-title">Nuestra Carta</h2>
 <p class="section-subtitle">Descubre nuestra seleccion de bebidas y snacks para acompanar la noche</p>
 </div>
@@ -403,7 +382,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <section class="section gallery-section" id="galeria">
 <div class="container">
 <div class="section-header fade-in">
-<svg><use href="#compass"/></svg>
+<svg class="ico ico-lg" width="32" height="32"><use href="#compass"/></svg>
 <h2 class="section-title">Galeria</h2>
 <p class="section-subtitle">Vive la experiencia Galeon Tavern a traves de nuestras imagenes</p>
 </div>
@@ -413,10 +392,10 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-<button class="lightbox-close" id="lightboxClose"><svg><use href="#x"/></svg></button>
-<button class="lightbox-nav lightbox-prev" id="lightboxPrev"><svg><use href="#chevron-left"/></svg></button>
+<button class="lightbox-close" id="lightboxClose"><svg><use href="#xmark"/></svg></button>
+<button class="lightbox-nav lightbox-prev" id="lightboxPrev"><svg><use href="#ch-left"/></svg></button>
 <img class="lightbox-img" id="lightboxImg" src="" alt="">
-<button class="lightbox-nav lightbox-next" id="lightboxNext"><svg><use href="#chevron-right"/></svg></button>
+<button class="lightbox-nav lightbox-next" id="lightboxNext"><svg><use href="#ch-right"/></svg></button>
 <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
@@ -425,23 +404,23 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <div class="container">
 <div class="review-badge fade-in">
 <div class="review-badge-inner">
-<div class="review-badge-stars">&starf;&starf;&starf;&starf;&starf;</div>
+<div class="review-badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <div class="review-badge-text"><span>4.3</span> &middot; 160 resenas Google</div>
 </div>
 </div>
 <div class="reviews-grid fade-in">
 <div class="review-card">
-<div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p class="review-text">"Galeon Tavern no es solo una taberna tematizada; es un portal directo a un galeon pirata donde los muertos no descansan y los vivos tampoco quieren hacerlo."</p>
 <p class="review-author">&mdash; Jose FG</p>
 </div>
 <div class="review-card">
-<div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p class="review-text">"Estupenda para bailar salsa y bachata los domingos. Taller gratuito y ambiente fantastico."</p>
 <p class="review-author">&mdash; Maria Jose Martinez Pineiro</p>
 </div>
 <div class="review-card">
-<div class="review-stars">&starf;&starf;&starf;&starf;&starf;</div>
+<div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
 <p class="review-text">"Un concepto diferente y muy original. Deseando volver."</p>
 <p class="review-author">&mdash; PEPE ORTEGA</p>
 </div>
@@ -453,7 +432,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <section class="section reservas" id="reservas">
 <div class="container">
 <div class="section-header fade-in">
-<svg><use href="#cheers"/></svg>
+<svg class="ico ico-lg" width="32" height="32"><use href="#cheers"/></svg>
 <h2 class="section-title">Reserva tu Mesa</h2>
 <p class="section-subtitle">Forma parte de la tripulacion. Reserva tu sitio en el Galeon</p>
 </div>
@@ -461,31 +440,31 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <form id="reservaForm">
 <div class="form-row">
 <div class="form-group">
-<label><svg><use href="#compass"/></svg>Nombre</label>
+<label><svg class="ico ico-sm"><use href="#compass"/></svg>Nombre</label>
 <input type="text" id="reservaNombre" required placeholder="Tu nombre">
 </div>
 <div class="form-group">
-<label><svg><use href="#phone"/></svg>Telefono</label>
+<label><svg class="ico ico-sm"><use href="#phone"/></svg>Telefono</label>
 <input type="tel" id="reservaTelefono" required placeholder="Tu telefono">
 </div>
 </div>
 <div class="form-group">
-<label><svg><use href="#map"/></svg>Email</label>
+<label><svg class="ico ico-sm"><use href="#map"/></svg>Email</label>
 <input type="email" id="reservaEmail" required placeholder="tu@email.com">
 </div>
 <div class="form-row">
 <div class="form-group">
-<label><svg><use href="#clock"/></svg>Fecha</label>
+<label><svg class="ico ico-sm"><use href="#clock"/></svg>Fecha</label>
 <input type="date" id="reservaFecha" required>
 </div>
 <div class="form-group">
-<label><svg><use href="#clock"/></svg>Hora</label>
+<label><svg class="ico ico-sm"><use href="#clock"/></svg>Hora</label>
 <input type="time" id="reservaHora" required>
 </div>
 </div>
 <div class="form-row">
 <div class="form-group">
-<label><svg><use href="#crossbones"/></svg>Personas</label>
+<label><svg class="ico ico-sm"><use href="#crossbones"/></svg>Personas</label>
 <select id="reservaPersonas" required>
 <option value="">Selecciona</option>
 <option value="1">1 persona</option>
@@ -499,7 +478,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 </select>
 </div>
 <div class="form-group">
-<label><svg><use href="#cheers"/></svg>Ocasion</label>
+<label><svg class="ico ico-sm"><use href="#cheers"/></svg>Ocasion</label>
 <select id="reservaOcasion">
 <option value="">Selecciona</option>
 <option value="cumpleanos">Cumpleanos</option>
@@ -511,7 +490,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 </div>
 </div>
 <div class="form-group">
-<label><svg><use href="#map"/></svg>Comentarios</label>
+<label><svg class="ico ico-sm"><use href="#map"/></svg>Comentarios</label>
 <textarea id="reservaComentarios" placeholder="Algo que debamos saber..."></textarea>
 </div>
 <button type="submit" class="form-submit">Reservar Mesa</button>
@@ -525,16 +504,16 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <section class="section location-section" id="ubicacion">
 <div class="container">
 <div class="section-header fade-in">
-<svg><use href="#compass"/></svg>
+<svg class="ico ico-lg" width="32" height="32"><use href="#compass"/></svg>
 <h2 class="section-title">Encuentranos</h2>
 <p class="section-subtitle">Te esperamos en el Poligono PISA</p>
 </div>
 <div class="location-grid">
 <div class="location-info fade-in">
-<h3><svg><use href="#anchor"/></svg>Llega al Galeon</h3>
-<div class="location-detail"><svg><use href="#loc"/></svg><span>Calle Nobel 7, Local C<br>Poligono PISA<br>41927 Mairena del Aljarafe, Sevilla</span></div>
-<div class="location-detail"><svg><use href="#phone"/></svg><a href="tel:+34617049166" style="color:#D4AF37">617 04 91 66</a></div>
-<div class="location-detail"><svg><use href="#clock"/></svg><span>Jueves a Domingo &mdash; 20:00 a 04:00</span></div>
+<h3><svg class="ico" width="22" height="22"><use href="#anchor"/></svg>Llega al Galeon</h3>
+<div class="location-detail"><svg class="ico"><use href="#loc"/></svg><span>Calle Nobel 7, Local C<br>Poligono PISA<br>41927 Mairena del Aljarafe, Sevilla</span></div>
+<div class="location-detail"><svg class="ico"><use href="#phone"/></svg><a href="tel:+34617049166" style="color:#C9A84C">617 04 91 66</a></div>
+<div class="location-detail"><svg class="ico"><use href="#clock"/></svg><span>Jueves a Domingo &mdash; 20:00 a 04:00</span></div>
 <div class="location-buttons">
 <a href="tel:+34617049166" class="btn btn-primary"><svg class="btn-ico"><use href="#phone"/></svg>Llamar</a>
 <a href="https://www.google.com/maps/search/?api=1&query=37.3522,-6.0645" target="_blank" rel="noopener" class="btn btn-outline"><svg class="btn-ico"><use href="#loc"/></svg>Abrir en Google Maps</a>
@@ -553,7 +532,7 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 <div class="container">
 <div class="footer-grid">
 <div class="footer-brand">
-<a href="#" class="nav-logo"><svg><use href="#ship"/></svg>GALEON TAVERN</a>
+<a href="#" class="nav-logo"><svg class="ico" width="22" height="22"><use href="#ship"/></svg>GALEON TAVERN</a>
 <p>El puerto donde empiezan las mejores historias. Copas, musica, karaoke y baile en el corazon del Aljarafe.</p>
 <div class="footer-social">
 <a href="#" aria-label="Instagram" title="Instagram"><svg><use href="#ig"/></svg></a>
@@ -562,220 +541,83 @@ footer{background:#0F1115;border-top:1px solid rgba(212,175,55,0.06);padding:80p
 </div>
 </div>
 <div class="footer-col">
-<h4><svg><use href="#compass"/></svg>Navegacion</h4>
+<h4><svg class="ico ico-sm"><use href="#compass"/></svg>Navegacion</h4>
 <ul>
-<li><a href="#nosotros"><svg><use href="#arrow"/></svg>Nosotros</a></li>
-<li><a href="#menu"><svg><use href="#arrow"/></svg>Carta</a></li>
-<li><a href="#galeria"><svg><use href="#arrow"/></svg>Galeria</a></li>
-<li><a href="#opiniones"><svg><use href="#arrow"/></svg>Opiniones</a></li>
-<li><a href="#reservas"><svg><use href="#arrow"/></svg>Reservas</a></li>
+<li><a href="#nosotros"><svg class="ico-sm" style="width:10px;height:10px"><use href="#arrow"/></svg>Nosotros</a></li>
+<li><a href="#menu"><svg class="ico-sm" style="width:10px;height:10px"><use href="#arrow"/></svg>Carta</a></li>
+<li><a href="#galeria"><svg class="ico-sm" style="width:10px;height:10px"><use href="#arrow"/></svg>Galeria</a></li>
+<li><a href="#opiniones"><svg class="ico-sm" style="width:10px;height:10px"><use href="#arrow"/></svg>Opiniones</a></li>
+<li><a href="#reservas"><svg class="ico-sm" style="width:10px;height:10px"><use href="#arrow"/></svg>Reservas</a></li>
 </ul>
 </div>
 <div class="footer-col">
-<h4><svg><use href="#anchor"/></svg>Contacto</h4>
+<h4><svg class="ico ico-sm"><use href="#anchor"/></svg>Contacto</h4>
 <ul>
-<li><a href="tel:+34617049166"><svg><use href="#arrow"/></svg>617 04 91 66</a></li>
-<li><a href="https://www.google.com/maps/search/?api=1&query=37.3522,-6.0645" target="_blank"><svg><use href="#arrow"/></svg>Como llegar</a></li>
-<li><a href="#reservas"><svg><use href="#arrow"/></svg>Reservar mesa</a></li>
+<li><a href="tel:+34617049166"><svg style="width:10px;height:10px"><use href="#arrow"/></svg>617 04 91 66</a></li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=37.3522,-6.0645" target="_blank"><svg style="width:10px;height:10px"><use href="#arrow"/></svg>Como llegar</a></li>
+<li><a href="#reservas"><svg style="width:10px;height:10px"><use href="#arrow"/></svg>Reservar mesa</a></li>
 </ul>
 </div>
 </div>
 <div class="footer-bottom">
 <p>&copy; 2025 Galeon Tavern &mdash; Todos los derechos reservados</p>
-<span class="footer-compass"><svg><use href="#compass"/></svg>N &middot; S &middot; E &middot; W</span>
+<span class="footer-compass"><svg style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5"><use href="#compass"/></svg>N &middot; S &middot; E &middot; W</span>
 </div>
 </div>
 </footer>
 
 <script>
-// MENU DATA
-const menuData = {
-cervezas: [
-{name:"Cruzcampo",desc:"Cania bien fria",price:"3,50"},
-{name:"Cruzcampo (Jarra)",desc:"Para los que tienen sed",price:"5,00"},
-{name:"Alhambra Especial",desc:"Cerveza premium",price:"4,00"},
-{name:"Heineken",desc:"Lager internacional",price:"4,00"},
-{name:"Corona",desc:"Mexicana con lima",price:"4,50"},
-{name:"Paulaner",desc:"Trigo alemana",price:"5,00"},
-{name:"Sin Alcohol",desc:"Cerveza 0,0",price:"3,00"}
-],
-copas: [
-{name:"Ron",desc:"Fundador, Carta Blanca",price:"7,00"},
-{name:"Whisky",desc:"Dyc o Ballantine's con cola",price:"8,00"},
-{name:"Ginebra (Beefeater)",desc:"Con tonica premium",price:"8,00"},
-{name:"Ginebra (Hendrick's)",desc:"Gin-tonic de autor",price:"10,00"},
-{name:"Vodka (Absolut)",desc:"Con naranja o arandanos",price:"8,00"},
-{name:"Tequila (Jose Cuervo)",desc:"Plata o reposado",price:"8,00"},
-{name:"Jagger Bomb",desc:"El clasico de la noche",price:"6,00"}
-],
-cocteles: [
-{name:"Mojito",desc:"Hierbabuena, lima y ron",price:"8,00"},
-{name:"Cuba Libre",desc:"Ron, cola y lima",price:"7,00"},
-{name:"Pina Colada",desc:"Cremoso de pina y coco",price:"9,00"},
-{name:"Caipirinha",desc:"Con cachaca brasilena",price:"8,00"},
-{name:"Sex on the Beach",desc:"Vodka y frutos rojos",price:"9,00"},
-{name:"Long Island",desc:"El mas potente de la carta",price:"10,00"},
-{name:"Margarita",desc:"Tequila, lima y sal",price:"8,00"}
-],
-refrescos: [
-{name:"Coca-Cola",desc:"Lata 33cl",price:"2,00"},
-{name:"Coca-Cola Zero",desc:"Lata 33cl",price:"2,00"},
-{name:"Nestea",desc:"Limonada fria",price:"2,00"},
-{name:"Aquarius",desc:"Limon o naranja",price:"2,00"},
-{name:"Agua Mineral",desc:"Con o sin gas",price:"1,50"},
-{name:"Tonica (Schweppes)",desc:"Para combinados",price:"2,00"},
-{name:"Zumo Natural",desc:"Naranja del dia",price:"2,50"}
-],
-snacks: [
-{name:"Patatas Fritas",desc:"Bolsa individual",price:"2,00"},
-{name:"Aceitunas",desc:"Racion de aceitunas alinadas",price:"3,00"},
-{name:"Frutos Secos",desc:"Mix de frutos secos",price:"3,00"},
-{name:"Cacahuetes",desc:"Cacahuetes tostados",price:"2,50"},
-{name:"Gusanitos",desc:"Bolsa individual",price:"2,00"},
-{name:"Tabla de Queso",desc:"Seleccion de 3 quesos",price:"8,00"}
-]
-};
+var menuData={cervezas:[{name:"Cruzcampo",desc:"Cania bien fria",price:"3,50"},{name:"Cruzcampo (Jarra)",desc:"Para los que tienen sed",price:"5,00"},{name:"Alhambra Especial",desc:"Cerveza premium",price:"4,00"},{name:"Heineken",desc:"Lager internacional",price:"4,00"},{name:"Corona",desc:"Mexicana con lima",price:"4,50"},{name:"Paulaner",desc:"Trigo alemana",price:"5,00"},{name:"Sin Alcohol",desc:"Cerveza 0,0",price:"3,00"}],copas:[{name:"Ron",desc:"Fundador, Carta Blanca",price:"7,00"},{name:"Whisky",desc:"Dyc o Ballantine's con cola",price:"8,00"},{name:"Ginebra (Beefeater)",desc:"Con tonica premium",price:"8,00"},{name:"Ginebra (Hendrick's)",desc:"Gin-tonic de autor",price:"10,00"},{name:"Vodka (Absolut)",desc:"Con naranja o arandanos",price:"8,00"},{name:"Tequila (Jose Cuervo)",desc:"Plata o reposado",price:"8,00"},{name:"Jagger Bomb",desc:"El clasico de la noche",price:"6,00"}],cocteles:[{name:"Mojito",desc:"Hierbabuena, lima y ron",price:"8,00"},{name:"Cuba Libre",desc:"Ron, cola y lima",price:"7,00"},{name:"Pina Colada",desc:"Cremoso de pina y coco",price:"9,00"},{name:"Caipirinha",desc:"Con cachaca brasilena",price:"8,00"},{name:"Sex on the Beach",desc:"Vodka y frutos rojos",price:"9,00"},{name:"Long Island",desc:"El mas potente de la carta",price:"10,00"},{name:"Margarita",desc:"Tequila, lima y sal",price:"8,00"}],refrescos:[{name:"Coca-Cola",desc:"Lata 33cl",price:"2,00"},{name:"Coca-Cola Zero",desc:"Lata 33cl",price:"2,00"},{name:"Nestea",desc:"Limonada fria",price:"2,00"},{name:"Aquarius",desc:"Limon o naranja",price:"2,00"},{name:"Agua Mineral",desc:"Con o sin gas",price:"1,50"},{name:"Tonica (Schweppes)",desc:"Para combinados",price:"2,00"},{name:"Zumo Natural",desc:"Naranja del dia",price:"2,50"}],snacks:[{name:"Patatas Fritas",desc:"Bolsa individual",price:"2,00"},{name:"Aceitunas",desc:"Racion de aceitunas alinadas",price:"3,00"},{name:"Frutos Secos",desc:"Mix de frutos secos",price:"3,00"},{name:"Cacahuetes",desc:"Cacahuetes tostados",price:"2,50"},{name:"Gusanitos",desc:"Bolsa individual",price:"2,00"},{name:"Tabla de Queso",desc:"Seleccion de 3 quesos",price:"8,00"}]};
+var GALLERY_IMAGES=["https://res.cloudinary.com/dmuxgamms/image/upload/v1782151794/unnamed_9_qgwlrh.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151793/unnamed_11_kq9rln.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151793/unnamed_12_vnj9mb.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151792/unnamed_10_jc0864.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151790/unnamed_14_habgcg.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151789/unnamed_13_kctplq.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151788/unnamed_15_xyboyk.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151787/unnamed_16_xbycrm.webp","https://res.cloudinary.com/dmuxgamms/image/upload/v1782151786/unnamed_17_vdqxqw.webp"];
+var SUPABASE_URL="https://tu-proyecto.supabase.co",SUPABASE_ANON_KEY="tu-anon-key";
 
-const GALLERY_IMAGES = [
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151794/unnamed_9_qgwlrh.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151793/unnamed_11_kq9rln.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151793/unnamed_12_vnj9mb.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151792/unnamed_10_jc0864.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151790/unnamed_14_habgcg.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151789/unnamed_13_kctplq.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151788/unnamed_15_xyboyk.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151787/unnamed_16_xbycrm.webp",
-"https://res.cloudinary.com/dmuxgamms/image/upload/v1782151786/unnamed_17_vdqxqw.webp"
-];
-
-const SUPABASE_URL = "https://tu-proyecto.supabase.co";
-const SUPABASE_ANON_KEY = "tu-anon-key";
-
-function renderMenu(category){
-const grid=document.getElementById('menuGrid');
-grid.innerHTML=menuData[category].map(item=>
-`<div class="menu-item">
-<div class="menu-item-info">
-<h4>${item.name}</h4>
-<p>${item.desc}</p>
-</div>
-<span class="menu-item-price">${item.price}€</span>
-</div>`
-).join('');
+function renderMenu(c){
+var g=document.getElementById('menuGrid');
+g.innerHTML=menuData[c].map(function(i){return'<div class="menu-item"><div class="menu-item-info"><h4>'+i.name+'</h4><p>'+i.desc+'</p></div><span class="menu-item-price">'+i.price+'\u20AC</span></div>'}).join('');
 }
-
-document.querySelectorAll('.menu-cat').forEach(btn=>{
-btn.addEventListener('click',()=>{
-document.querySelectorAll('.menu-cat').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-renderMenu(btn.dataset.cat);
-});
-});
+document.querySelectorAll('.menu-cat').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.menu-cat').forEach(function(x){x.classList.remove('active')});b.classList.add('active');renderMenu(b.dataset.cat)})});
 
 function renderGallery(){
-const grid=document.getElementById('galleryGrid');
-grid.innerHTML=GALLERY_IMAGES.map((url,i)=>
-`<div class="gallery-item" data-index="${i}">
-<img src="${url}" alt="Galeon Tavern ${i+1}" loading="lazy">
-<div class="gallery-item-overlay"><svg><use href="#anchor"/></svg></div>
-</div>`
-).join('');
+var g=document.getElementById('galleryGrid');
+g.innerHTML=GALLERY_IMAGES.map(function(u,i){return'<div class="gallery-item" data-index="'+i+'"><img src="'+u+'" alt="Galeon Tavern '+(i+1)+'" loading="lazy"><div class="gallery-item-overlay"><svg class="ico" width="32" height="32"><use href="#anchor"/></svg></div></div>'}).join('');
 }
 
-let currentIndex=0;
-const lightbox=document.getElementById('lightbox');
-const lightboxImg=document.getElementById('lightboxImg');
-const lightboxCounter=document.getElementById('lightboxCounter');
+var ci=0,lb=document.getElementById('lightbox'),li=document.getElementById('lightboxImg'),lc=document.getElementById('lightboxCounter');
+function ol(i){ci=i;ul();lb.classList.add('active');document.body.style.overflow='hidden'}
+function ul(){li.src=GALLERY_IMAGES[ci];li.alt='Galeon Tavern '+(ci+1);lc.textContent=(ci+1)+' / '+GALLERY_IMAGES.length}
+document.getElementById('galleryGrid').addEventListener('click',function(e){var it=e.target.closest('.gallery-item');if(it)ol(parseInt(it.dataset.index))});
+document.getElementById('lightboxClose').addEventListener('click',function(){lb.classList.remove('active');document.body.style.overflow=''});
+document.getElementById('lightboxPrev').addEventListener('click',function(){ci=(ci-1+GALLERY_IMAGES.length)%GALLERY_IMAGES.length;ul()});
+document.getElementById('lightboxNext').addEventListener('click',function(){ci=(ci+1)%GALLERY_IMAGES.length;ul()});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('active'))return;if(e.key==='Escape')document.getElementById('lightboxClose').click();if(e.key==='ArrowLeft')document.getElementById('lightboxPrev').click();if(e.key==='ArrowRight')document.getElementById('lightboxNext').click()});
+lb.addEventListener('click',function(e){if(e.target===lb)document.getElementById('lightboxClose').click()});
 
-function openLightbox(index){
-currentIndex=index;
-updateLightbox();
-lightbox.classList.add('active');
-document.body.style.overflow='hidden';
-}
+document.getElementById('navToggle').addEventListener('click',function(){document.getElementById('navLinks').classList.toggle('open')});
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);document.getElementById('navLinks').classList.remove('open')});
 
-function updateLightbox(){
-lightboxImg.src=GALLERY_IMAGES[currentIndex];
-lightboxImg.alt=`Galeon Tavern ${currentIndex+1}`;
-lightboxCounter.textContent=`${currentIndex+1} / ${GALLERY_IMAGES.length}`;
-}
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el)});
 
-document.getElementById('galleryGrid').addEventListener('click',e=>{
-const item=e.target.closest('.gallery-item');
-if(item) openLightbox(parseInt(item.dataset.index));
+(function(){var h=document.querySelector('.hero');for(var i=0;i<30;i++){var p=document.createElement('div');p.className='hero-particle';p.style.left=(Math.random()*100)+'%';p.style.animationDelay=(Math.random()*6)+'s';p.style.animationDuration=(4+Math.random()*4)+'s';h.appendChild(p)}})();
+
+document.getElementById('reservaFecha').min=new Date().toISOString().split('T')[0];
+
+document.getElementById('reservaForm').addEventListener('submit',async function(e){
+e.preventDefault();var msg=document.getElementById('formMessage');msg.className='form-message';msg.style.display='none';
+var n=document.getElementById('reservaNombre').value.trim(),t=document.getElementById('reservaTelefono').value.trim(),em=document.getElementById('reservaEmail').value.trim(),f=document.getElementById('reservaFecha').value,h=document.getElementById('reservaHora').value,p=document.getElementById('reservaPersonas').value,o=document.getElementById('reservaOcasion').value,c=document.getElementById('reservaComentarios').value.trim();
+if(!n||!t||!em||!f||!h||!p){msg.textContent='Por favor, rellena todos los campos obligatorios.';msg.className='form-message error';msg.style.display='block';return}
+if(t.length<9){msg.textContent='El telefono debe tener al menos 9 digitos.';msg.className='form-message error';msg.style.display='block';return}
+var sd=new Date(f+'T'+h);if(sd<new Date()){msg.textContent='La fecha y hora deben ser posteriores al momento actual.';msg.className='form-message error';msg.style.display='block';return}
+var sb=this.querySelector('button[type="submit"]');sb.disabled=true;sb.textContent='Reservando...';
+try{
+var r=await fetch(SUPABASE_URL+'/rest/v1/reservas',{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY},body:JSON.stringify({nombre:n,telefono:t,email:em,fecha:f,hora:h,personas:parseInt(p),ocasion:o||null,comentarios:c||null,confirmada:false})});
+if(!r.ok)throw new Error('Error');
+msg.textContent='Reserva realizada con exito. Te confirmaremos por WhatsApp o llamada.';msg.className='form-message success';msg.style.display='block';this.reset();
+}catch(e){msg.textContent='Hubo un error al procesar tu reserva. Intentelo de nuevo o llamenos.';msg.className='form-message error';msg.style.display='block'}
+finally{sb.disabled=false;sb.textContent='Reservar Mesa'}
 });
 
-document.getElementById('lightboxClose').addEventListener('click',()=>{
-lightbox.classList.remove('active');
-document.body.style.overflow='';
-});
-
-document.getElementById('lightboxPrev').addEventListener('click',()=>{
-currentIndex=(currentIndex-1+GALLERY_IMAGES.length)%GALLERY_IMAGES.length;
-updateLightbox();
-});
-
-document.getElementById('lightboxNext').addEventListener('click',()=>{
-currentIndex=(currentIndex+1)%GALLERY_IMAGES.length;
-updateLightbox();
-});
-
-document.addEventListener('keydown',e=>{
-if(!lightbox.classList.contains('active')) return;
-if(e.key==='Escape') document.getElementById('lightboxClose').click();
-if(e.key==='ArrowLeft') document.getElementById('lightboxPrev').click();
-if(e.key==='ArrowRight') document.getElementById('lightboxNext').click();
-});
-
-lightbox.addEventListener('click',e=>{
-if(e.target===lightbox) document.getElementById('lightboxClose').click();
-});
-
-document.getElementById('navToggle').addEventListener('click',()=>{
-document.getElementById('navLinks').classList.toggle('open');
-});
-
-window.addEventListener('scroll',()=>{
-const nav=document.getElementById('navbar');
-nav.classList.toggle('scrolled',window.scrollY>50);
-document.getElementById('navLinks').classList.remove('open');
-});
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('visible');
-observer.unobserve(entry.target);
-}
-});
-},{threshold:0.1});
-
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-(function createParticles(){
-const hero=document.querySelector('.hero');
-for(let i=0;i=0&&end.getTime()>now.getTime()){
-btn.classList.remove('disabled');
-btn.style.pointerEvents='';
-}
-},1000);
-});
-});
-
-// RIPPLE EFFECT ON BUTTONS
-document.querySelectorAll('.btn, .form-submit, .menu-cat').forEach(btn=>{
-btn.addEventListener('click',function(e){
-const ripple=document.createElement('span');
-ripple.className='ripple';
-const rect=this.getBoundingClientRect();
-ripple.style.left=(e.clientX-rect.left-10)+'px';
-ripple.style.top=(e.clientY-rect.top-10)+'px';
-ripple.style.width='20px';
-ripple.style.height='20px';
-this.appendChild(ripple);
-setTimeout(()=>ripple.remove(),600);
-});
-});
+document.querySelectorAll('.btn,.form-submit,.menu-cat').forEach(function(b){b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect();r.style.left=(e.clientX-rect.left-10)+'px';r.style.top=(e.clientY-rect.top-10)+'px';r.style.width='20px';r.style.height='20px';this.appendChild(r);setTimeout(function(){r.remove()},600)})});
 
 renderMenu('cervezas');
 renderGallery();
