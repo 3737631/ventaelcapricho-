@@ -43,6 +43,11 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -141,6 +146,12 @@ ul {
   justify-content: space-between;
 }
 
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 .nav-logo-text {
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -148,6 +159,20 @@ ul {
   color: var(--color-primary);
   letter-spacing: 1px;
   transition: var(--transition);
+  line-height: 1.2;
+}
+
+.nav-logo-tagline {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.navbar.scrolled .nav-logo-tagline {
+  display: none;
 }
 
 .nav-menu {
@@ -266,14 +291,26 @@ ul {
   background-image:
     radial-gradient(circle at 20% 80%, rgba(214, 195, 165, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(199, 107, 79, 0.1) 0%, transparent 50%);
+  opacity: 0.6;
 }
 
-.hero-bg::before {
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #2D2D2D 0%, #4A3F35 25%, #6B5540 50%, #8B6742 75%, #A67C52 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-image::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8B6742 0%, #A67C52 30%, #C76B4F 60%, #708238 100%);
-  opacity: 0.9;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(199, 107, 79, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(112, 130, 56, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 20%, rgba(214, 195, 165, 0.2) 0%, transparent 50%);
 }
 
 .hero-content {
@@ -310,6 +347,15 @@ ul {
   letter-spacing: 3px;
   margin-bottom: 24px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 .hero-subtitle {
@@ -432,6 +478,19 @@ ul {
 
 .nosotros {
   background: var(--bg-secondary);
+  position: relative;
+}
+
+.nosotros::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .nosotros-grid {
@@ -503,6 +562,19 @@ ul {
 
 .features {
   background: var(--bg-primary);
+  position: relative;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .features-header {
@@ -667,6 +739,19 @@ ul {
 .galeria {
   background: var(--bg-primary);
   padding: 100px 0;
+  position: relative;
+}
+
+.galeria::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .galeria-header {
@@ -726,6 +811,19 @@ ul {
 
 .eventos {
   background: var(--bg-secondary);
+  position: relative;
+}
+
+.eventos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .eventos-content {
@@ -798,6 +896,19 @@ ul {
 
 .opiniones {
   background: var(--bg-primary);
+  position: relative;
+}
+
+.opiniones::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .opiniones-header {
@@ -864,6 +975,19 @@ ul {
 
 .reservas {
   background: var(--bg-secondary);
+  position: relative;
+}
+
+.reservas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .reservas-content {
@@ -965,6 +1089,19 @@ ul {
 
 .ubicacion {
   background: var(--bg-primary);
+  position: relative;
+}
+
+.ubicacion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  border-radius: 2px;
 }
 
 .ubicacion-grid {
