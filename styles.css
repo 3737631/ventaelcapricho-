@@ -792,6 +792,18 @@ ul {
   position: relative;
 }
 
+.galeria-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(45,45,45,0.1) 0%, rgba(45,45,45,0.5) 100%);
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.galeria-item:hover .galeria-overlay {
+  background: linear-gradient(180deg, rgba(45,45,45,0.05) 0%, rgba(45,45,45,0.35) 100%);
+}
+
 .galeria-item:hover .galeria-img {
   transform: scale(1.05);
 }
@@ -807,6 +819,8 @@ ul {
   color: #fff;
   font-weight: 500;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .eventos {
