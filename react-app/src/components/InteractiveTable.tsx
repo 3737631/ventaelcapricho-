@@ -46,7 +46,7 @@ export default function InteractiveTable() {
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStartRef.current - touchEnd;
 
-    if (Math.abs(diff) > 40) { // Umbral para el deslizamiento táctil
+    if (Math.abs(diff) > 40) { // threshold for swipe
       if (diff > 0) {
         handleNext();
       } else {
@@ -58,12 +58,12 @@ export default function InteractiveTable() {
 
   return (
     <section id="mesa-interactiva" className="relative py-20 bg-background overflow-hidden border-b border-primary/30">
-      {/* Cenefa decorativa andaluza en la parte superior */}
+      {/* Decorative Traditional Andalusian Tile Strip */}
       <div className="absolute top-0 left-0 w-full h-4 bg-tile-pattern opacity-40"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Cabecera de la sección: Minimalista y elegante */}
+        {/* Header Section: Ultra Elegant & Minimalist */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="font-cursive text-4xl text-accent block mb-2 leading-none">
             El arte de la hospitalidad
@@ -78,9 +78,10 @@ export default function InteractiveTable() {
           </p>
         </div>
 
-        {/* Contenedor del mantel interactivo centrado */}
+        {/* Centered Minimalist Interactive Tablecloth */}
         <div className="max-w-4xl mx-auto">
           
+          {/* Table Canvas Header - Clean, No unrequested labels */}
           <div className="mb-4 flex items-center justify-between px-2">
             <span className="text-xs font-semibold uppercase tracking-widest text-brown/65 flex items-center gap-2 font-sans">
               <Utensils className="w-3.5 h-3.5 text-accent animate-pulse" /> 
@@ -91,7 +92,7 @@ export default function InteractiveTable() {
             </span>
           </div>
 
-          {/* El lienzo del mantel con soporte táctil para deslizamientos */}
+          {/* The Tablecloth Canvas - Clean, Smooth & Minimalist with touch swiping support */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +103,7 @@ export default function InteractiveTable() {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Flechas indicadoras de navegación en pantallas móviles */}
+            {/* Mobile Navigation Arrows Overlay for sensory comfort */}
             <div className="absolute inset-y-0 left-2.5 flex items-center justify-center z-20 sm:hidden pointer-events-none">
               <button 
                 onClick={handlePrev}
@@ -122,17 +123,18 @@ export default function InteractiveTable() {
               </button>
             </div>
 
-            {/* Distribución armoniosa de platos sobre el mantel */}
+            {/* Plates Placed Harmoniously on the Tablecloth (No dragging - highly visual & elegant grid) */}
             <div className="absolute inset-6 sm:inset-12 z-10 grid grid-cols-5 h-full items-center justify-center">
               {interactiveDishes.map((dish, idx) => {
                 const isSelected = selectedDish?.id === dish.id;
                 
+                // Clean, elegant coordinate distribution for a perfect fine dining setup
                 const positions = [
-                  "col-start-1 row-start-2 -translate-y-8 sm:-translate-y-12",  // Croquetas (Izquierda-arriba)
-                  "col-start-2 row-start-1 translate-y-4 sm:translate-y-2",     // Solomillo (Centro-arriba)
-                  "col-start-3 row-start-2 -translate-y-8 sm:-translate-y-12",  // Torrija (Derecha-arriba)
-                  "col-start-4 row-start-3 -translate-y-2 sm:-translate-y-4",   // Manzanilla (Centro-abajo)
-                  "col-start-5 row-start-2 -translate-y-8 sm:-translate-y-12",  // Jamón (Derecha-abajo)
+                  "col-start-1 row-start-2 -translate-y-8 sm:-translate-y-12",  // Croquetas (Left-top)
+                  "col-start-2 row-start-1 translate-y-4 sm:translate-y-2",     // Solomillo (Center-top)
+                  "col-start-3 row-start-2 -translate-y-8 sm:-translate-y-12",  // Torrija (Right-top)
+                  "col-start-4 row-start-3 -translate-y-2 sm:-translate-y-4",   // Manzanilla (Center-bottom)
+                  "col-start-5 row-start-2 -translate-y-8 sm:-translate-y-12",  // Jamón (Right-bottom)
                 ];
 
                 return (
@@ -146,27 +148,28 @@ export default function InteractiveTable() {
                       className="relative cursor-pointer group"
                       onClick={() => setSelectedDish(dish)}
                     >
-                      {/* Anillo de porcelana del plato */}
+                      {/* Ceramic Porcelain Plate Ring */}
                       <div className={`w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-background transition-all duration-500 relative ${
                         isSelected 
                           ? 'ring-[5px] ring-white shadow-xl scale-110 border border-accent/35' 
                           : 'ring-[2px] ring-white/45 shadow-lg hover:shadow-xl'
                       }`}>
                         
-                        {/* Filigrana de cerámica interior */}
+                        {/* Seville Blue / Ochre Ceramic Pattern Inside Plate */}
                         <div className={`absolute inset-1 rounded-full border border-dashed pointer-events-none transition-colors duration-500 ${
                           isSelected ? 'border-accent/40' : 'border-primary/30'
                         }`}></div>
                         
+                        {/* Inner gold/bronze circle for refinement */}
                         <div className="absolute inset-2 rounded-full border border-primary/10 pointer-events-none"></div>
 
-                        {/* Icono del plato representativo */}
+                        {/* Icon representation */}
                         <span className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                           {renderDishIcon(dish.id, isSelected ? "w-6 h-6 sm:w-8 sm:h-8 text-accent" : "w-5 h-5 sm:w-7 sm:h-7 text-[#B8826A]/90")}
                         </span>
                       </div>
 
-                      {/* Nombres e indicador de plato activo */}
+                      {/* Elegantly typed plate labels under - Refined, Minimalist and interactive */}
                       <div className="mt-2 text-center flex flex-col items-center">
                         <span className={`text-[10px] sm:text-xs font-serif tracking-wide transition-all duration-300 ${
                           isSelected 
@@ -175,7 +178,7 @@ export default function InteractiveTable() {
                         }`}>
                           {dish.name}
                         </span>
-                        {/* Pequeña línea dorada inferior que se despliega al seleccionar */}
+                        {/* Elegant minimal gold underline indicator that expands on select */}
                         <motion.div 
                           initial={{ width: 0 }}
                           animate={{ width: isSelected ? '28px' : '0px' }}
@@ -189,7 +192,7 @@ export default function InteractiveTable() {
               })}
             </div>
 
-            {/* Barra de estado inferior */}
+            {/* Fine status bar on bottom of the tablecloth - No Capricho, purely sensory */}
             <div className="w-full text-center relative z-20 select-none pb-1">
               <span className="text-[10px] uppercase tracking-widest text-[#F3EEE4] bg-black/20 backdrop-blur-sm px-3.5 py-1 rounded-full font-sans">
                 Experiencia Sensorial
