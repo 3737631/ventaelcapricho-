@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Flame, Wine, Cake, ChefHat, Award, Utensils } from 'lucide-react';
 import { interactiveDishes } from '../data';
-import type { InteractiveTableDish } from '../types';
+import { InteractiveTableDish } from '../types';
 
 export default function InteractiveTable() {
   const [selectedDish, setSelectedDish] = useState<InteractiveTableDish | null>(interactiveDishes[0]);
